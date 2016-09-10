@@ -44,6 +44,7 @@ class Brotherhood_Importer
         }
     }
 
+    /* Get the latitude & longitude of each address */
     public function updateLatLng($row)
     {
         global $wpdb;
@@ -58,8 +59,6 @@ class Brotherhood_Importer
             return;
         }
 
-
-
         foreach($latLng['results'] as $res){
             if(!isset($res['geometry']['location'])) {
                 continue;
@@ -67,7 +66,7 @@ class Brotherhood_Importer
 
             $lat = $res['geometry']['location']['lat'];
             $lng = $res['geometry']['location']['lng'];
-            
+
             $wpdb->update(
                 Brotherhood::getBandTableName(),
                 array(
@@ -80,9 +79,6 @@ class Brotherhood_Importer
             );
         }
 
-
-
-        return $result;
     }
 
 

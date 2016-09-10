@@ -4,6 +4,7 @@ class Brotherhood
     const version = "1.00";
     const prefixId = "brotherhood_demo__";
     const versionKey = "version";
+    const MAPS_API_KEY = "AIzaSyA7vIFU3dUCzjuM8BqXX0Fxj_3x7fvlei4";
 
     public static function install()
     {
@@ -35,12 +36,14 @@ class Brotherhood
         self::updateOption("version", self::version);
     }
 
-    public static function getBandTableName(){
+    public static function getBandTableName()
+    {
         global $wpdb;
         return $wpdb->base_prefix . "brotherhood_band";
     }
 
-    public static function checkVersionUpgrade(){
+    public static function checkVersionUpgrade()
+    {
         $installedVersion = self::getOption(self::versionKey);
 
         if($installedVersion !== self::version){
@@ -48,15 +51,24 @@ class Brotherhood
         }
     }
 
-    public static function getOptionKey($option){
+    public static function getOptionKey($option)
+    {
         return self::prefixId . $option;
     }
 
-    public static function getOption($option, $default = null){
+    public static function getOption($option, $default = null)
+    {
         return get_option(self::prefixId . $option, $default);
     }
 
-    public static function updateOption($option, $value){
+    public static function updateOption($option, $value)
+    {
         update_option(self::prefixId . $option, $value);
+    }
+
+    public static function addHeaderElements()
+    {
+        wp_enqueue_script('googlemaps', "https://maps.googleapis.com/maps/api/js?key=" . self::MAPS_API_KEY . "&callback=initMap");
+        wp_enqueue_script('custom-map', plugins_url('js/map.js', dirname(__FILE__)), array('jquery'));
     }
 }
