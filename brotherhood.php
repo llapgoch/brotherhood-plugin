@@ -31,3 +31,5 @@ DEFINE(DS, DIRECTORY_SEPARATOR);
 register_activation_hook( __FILE__, array('Brotherhood', 'install'));
 add_action( 'init', array('Brotherhood', 'checkVersionUpgrade') );
 add_action('wp', array('Brotherhood', 'addHeaderElements'));
+
+add_shortcode('main_map_shortcode', 'main_map_shortcode');

@@ -42,6 +42,18 @@ class Brotherhood
         return $wpdb->base_prefix . "brotherhood_band";
     }
 
+    public function getAllBands()
+    {
+        global $wpdb;
+
+        return $wpdb->get_results("SELECT * FROM `" . self::getBandTableName() . "`");
+    }
+
+    public function getAllBandsJSON()
+    {
+        return json_encode(self::getAllBands());
+    }
+
     public static function checkVersionUpgrade()
     {
         $installedVersion = self::getOption(self::versionKey);
@@ -69,6 +81,7 @@ class Brotherhood
     public static function addHeaderElements()
     {
         wp_enqueue_script('googlemaps', "https://maps.googleapis.com/maps/api/js?key=" . self::MAPS_API_KEY . "&callback=initMap");
+        wp_enqueue_script('googlemarkercluster', plugins_url('js/MarkerCluster.js', dirname(__FILE__)), array('googlemaps'));
         wp_enqueue_script('custom-map', plugins_url('js/map.js', dirname(__FILE__)), array('jquery'));
     }
 }
