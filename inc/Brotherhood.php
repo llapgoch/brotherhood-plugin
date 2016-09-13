@@ -30,6 +30,8 @@ class Brotherhood
           KEY latlong (latitide,longitude)
         )");
 
+        echo $sql;exit;
+
         Brotherhood_Importer::installData();
 
 
