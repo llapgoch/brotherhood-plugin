@@ -53,6 +53,8 @@ class Brotherhood_Importer
 
         $latLng = json_decode(file_get_contents($url),true);
 
+        var_dump($latLng);exit;
+
         if(!isset($latLng['results'])) {
             return;
         }
