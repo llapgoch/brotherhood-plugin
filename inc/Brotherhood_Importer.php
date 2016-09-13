@@ -53,8 +53,6 @@ class Brotherhood_Importer
 
         $latLng = json_decode(file_get_contents($url),true);
 
-        var_dump($latLng);exit;
-
         if(!isset($latLng['results'])) {
             return;
         }
@@ -66,9 +64,6 @@ class Brotherhood_Importer
 
             $lat = $res['geometry']['location']['lat'];
             $lng = $res['geometry']['location']['lng'];
-
-            var_dump($lat);
-            var_dump($lng);
 
             $wpdb->update(
                 Brotherhood::getBandTableName(),
