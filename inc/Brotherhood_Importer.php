@@ -8,9 +8,7 @@ class Brotherhood_Importer
         global $wpdb;
 
         if(Brotherhood::getOption(self::DATA_INSTALLED_KEY) == false) {
-
-
-            $wpdb->query("INSERT INTO `bh_brotherhood_band` (`name`, `street`, `city`, `state`, `zip_code`, `facebook`, `twitter`, `website`, `gig_dates`, `interview`, `latitide`, `longitude`)
+            $wpdb->query("INSERT INTO `bh_brotherhood_band` (`name`, `street`, `city`, `state`, `zip_code`, `facebook`, `twitter`, `website`, `gig_dates`, `interview`, `latitude`, `longitude`)
             VALUES
             ('Van Halst', 'Thornton Ct', 'Edmonton', 'AB', 'T5J 2E7', 'https://www.facebook.com/vanhalstmusic/', 'https://twitter.com/vanhalstband', 'http://vanhalstmusic.com/', NULL, NULL, NULL, NULL),
                 ('Divinity', '9th Avenue', 'Calgary', 'AB', 'AB T2G', 'https://www.facebook.com/divinitymetal', NULL, 'http://www.divinity.ca/', NULL, NULL, NULL, NULL),
