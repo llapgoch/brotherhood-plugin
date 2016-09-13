@@ -49,7 +49,7 @@ class Brotherhood_Importer
         $row['country'] = 'Canada';
 
         $dataUrl = urlencode(preg_replace("/\s+/", " ", $row['street'] . " " . $row['city']." ".$row['state']." ".$row['zip_code'] . " " . $row['country']));
-        $url = "http://maps.googleapis.com/maps/api/geocode/json?address=" . $dataUrl . "&sensor=false&key=" . Brotherhood::MAPS_API_KEY;
+        $url = "https://maps.googleapis.com/maps/api/geocode/json?address=" . $dataUrl . "&sensor=false&key=" . Brotherhood::MAPS_API_KEY;
 
         $latLng = json_decode(file_get_contents($url),true);
 
