@@ -54,7 +54,7 @@
             }
 
             map.setCenter(completeBound.getCenter());
-            map.setZoom(4);
+            map.setZoom($(window).width() > 640 ? 4 : 2);
         }
 
         function initMap() {
