@@ -51,9 +51,6 @@ class Brotherhood_Importer
         $dataUrl = urlencode(preg_replace("/\s+/", " ", $row['street'] . " " . $row['city']." ".$row['state']." ".$row['zip_code'] . " " . $row['country']));
         $url = "http://maps.googleapis.com/maps/api/geocode/json?address=" . $dataUrl . "&sensor=false";
 
-        var_dump($url);
-        echo "<br />";exit;
-
         $latLng = json_decode(file_get_contents($url),true);
 
         if(!isset($latLng['results'])) {
@@ -67,6 +64,9 @@ class Brotherhood_Importer
 
             $lat = $res['geometry']['location']['lat'];
             $lng = $res['geometry']['location']['lng'];
+
+            var_dump($lat);
+            var_dump($lng);
 
             $wpdb->update(
                 Brotherhood::getBandTableName(),
