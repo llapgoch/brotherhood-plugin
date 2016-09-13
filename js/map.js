@@ -2,6 +2,10 @@
     window.Brotherhood = window.Brotherhood || {};
 
     $(document).on('ready', function(){
+        if(!$('.main-map').size()){
+            return;
+        }
+        
         var map = new google.maps.Map($('.main-map').get(0));
         var mapMarkers = [];
         var markerCluster;
