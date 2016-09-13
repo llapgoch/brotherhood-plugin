@@ -27,13 +27,10 @@ class Brotherhood
           latitude decimal(10,8) DEFAULT NULL,
           longitude decimal(11,8) DEFAULT NULL,
           PRIMARY KEY  (id),
-          KEY latlong (latitide,longitude)
+          KEY latlong (latitude,longitude)
         )");
 
-        echo $sql;exit;
-
         Brotherhood_Importer::installData();
-
 
         self::updateOption("version", self::version);
     }
